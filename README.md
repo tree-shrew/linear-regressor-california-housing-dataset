@@ -34,7 +34,7 @@ The above quant results show that the Linear Regressor can represent ~63% of the
 What did you learn while building this project? What challenges did you face and how did you overcome them?
 - The features 'AveRooms' & 'AveBedrms' are nearly perfectly correlated, however this multicollinearity does not impact target prediction. Infact dropping any one feature reduces the R2 score significantly. 
 - Even though the features 'AveBedrms', 'AveOccup' and 'Population' have extremely low correlation with the target variable, they have an impact towards a better fit model.
-- This model could be further improved upon by removing outliers from highly skewed features like 'Polpulation', 'MedInc', 'AveBedrms', 'AveRooms', 'AveOccup'.
+- This model could be further improved upon by removing outliers from highly skewed features like 'Population', 'MedInc', 'AveBedrms', 'AveRooms', 'AveOccup'.
 
 
 ## Dataset Details
