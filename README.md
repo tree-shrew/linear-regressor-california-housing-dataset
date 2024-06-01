@@ -11,7 +11,7 @@ Predictive Modelling using Linear Regression on the California Housing Dataset
 - `Dataset`: California Housing Dataset [(Details)](https://github.com/tree-shrew/linear-regressor-california-housing-dataset#dataset-details)
 - `Model`: [Linear Regressor](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html)
 - `Input`: 8 features
-- `Split`: For a standard test size of 0.2, randon state 122 provided best results
+- `Split`: For a standard test size of 0.2, random state 122 provided best results
 - `Scale`: All features were scaled upon splitting
 - `Output`: Median House Value
 
