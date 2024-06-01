@@ -8,7 +8,7 @@ Predictive Modelling using Linear Regression on the California Housing Dataset
 
 ## Implementation Details
 
-- Dataset: California Housing Dataset (view below for more details)
+- Dataset: California Housing Dataset [Details](https://github.com/tree-shrew/linear-regressor-california-housing-dataset#dataset-details)
 - Model: [Linear Regressor](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html)
 - Input: 8 features, none dropped
 - Split: For a standard test size of 0.2, randon state 122 provided best results
@@ -74,7 +74,7 @@ or
 ```bash
 jupyter notebook california_housing.ipynb
 ```
-or open with Juoyter Lab
+or open with Jupyter Lab
 ```bash
 jupyter lab
 ```
