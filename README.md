@@ -19,7 +19,7 @@ Predictive Modelling using Linear Regression on the California Housing Dataset
 ## Evaluation and Results
 
 
-| Metric        | Value         |
+| *Metric*      | *Value*       |
 | ------------- | ------------- |
 | R2 Score      | 0.6316        |
 | MSE           | 0.4713        |
@@ -49,25 +49,37 @@ It can be downloaded/loaded using the sklearn.datasets.fetch_california_housing 
 
 - [California Housing Dataset in Sklearn Documentation](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_california_housing.html)
 - 20640 samples
-- 8 Input Features: 
-    - MedInc median income in block group
-    - HouseAge median house age in block group
-    - AveRooms average number of rooms per household
-    - AveBedrms average number of bedrooms per household
-    - Population block group population
-    - AveOccup average number of household members
-    - Latitude block group latitude
-    - Longitude block group longitude
+- Features: 
+    - `MedInc` median income in block group
+    - `HouseAge` median house age in block group
+    - `AveRooms` average number of rooms per household
+    - `AveBedrms` average number of bedrooms per household
+    - `Population` block group population
+    - `AveOccup` average number of household members
+    - `Latitude` block group latitude
+    - `Longitude` block group longitude
 - Target: Median house value for California districts, expressed in hundreds of thousands of dollars ($100,000)
 
 
 ## How to Run
 
-The code is built on Google Colab on an iPython Notebook. 
+Template code is provided in the `california_housing.ipynb` file. 
+
+In a terminal or command window, navigate to the top-level project directory `linear-regressor-california-housing-dataset` (that contains this README) and run one of the following commands:
 
 ```bash
-Simply download the repository, upload the notebook and dataset on colab, and hit play!
+ipython notebook california_housing.ipynb
+```  
+or
+```bash
+jupyter notebook california_housing.ipynb
 ```
+or open with Juoyter Lab
+```bash
+jupyter lab
+```
+
+This will open the Jupyter Notebook software and project file in your browser.
 
 
 ## Libraries 
@@ -82,7 +94,7 @@ Simply download the repository, upload the notebook and dataset on colab, and hi
 
 ## Acknowledgements
 
-All the links, blogs, videos, papers you referred to/took inspiration from for building this project. 
+Below references can be used for further exploration: 
 
  - [Predictive Modelling with the California housing dataset](https://inria.github.io/scikit-learn-mooc/python_scripts/datasets_california_housing.html)
  - [Reference Article](https://medium.com/@basumatary18/implementing-linear-regression-on-california-housing-dataset-378e14e421b7)
