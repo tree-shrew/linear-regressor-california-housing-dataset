@@ -1,4 +1,4 @@
-![Logo](https://github.com/tree-shrew/linear-regressor-california-housing-dataset/blob/main/Bivariate%20Analysis.png)
+![Logo](https://github.com/tree-shrew/regression-california-housing/blob/main/Bivariate%20Analysis.png)
 
 
 # Project Title
@@ -8,7 +8,7 @@ Predictive Modelling using Linear Regression on the California Housing Dataset
 
 ## Implementation Details
 
-- `Dataset`: California Housing Dataset [(Details)](https://github.com/tree-shrew/linear-regressor-california-housing-dataset#dataset-details)
+- `Dataset`: California Housing Dataset [(Details)](https://github.com/tree-shrew/regression-california-housing#dataset-details)
 - `Model`: [Linear Regressor](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html)
 - `Input`: 8 features
 - `Split`: For a standard test size of 0.2, random state 122 provided best results
@@ -26,7 +26,7 @@ Predictive Modelling using Linear Regression on the California Housing Dataset
 
 The above quant results show that the Linear Regressor can represent ~63% of the variability observed in the target variable can be explained by the regression model. 
 
-![Ground Truth vs Predicted Median Housing Values](https://github.com/tree-shrew/linear-regressor-california-housing-dataset/blob/main/Actual%20vs%20Predicted.png)
+![Ground Truth vs Predicted Median Housing Values](https://github.com/tree-shrew/regression-california-housing/blob/main/Actual%20vs%20Predicted.png)
 
 
 ## Key Takeaways
@@ -65,7 +65,7 @@ It can be downloaded/loaded using the sklearn.datasets.fetch_california_housing 
 
 Template code is provided in the `california_housing.ipynb` file. 
 
-In a terminal or command window, navigate to the top-level project directory `linear-regressor-california-housing-dataset` (that contains this README) and run one of the following commands:
+In a terminal or command window, navigate to the top-level project directory `regression-california-housing` (that contains this README) and run one of the following commands:
 
 ```bash
 ipython notebook california_housing.ipynb
