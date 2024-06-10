@@ -1,51 +1,86 @@
 ![Logo](https://github.com/tree-shrew/regression-california-housing/blob/main/Bivariate%20Analysis.png)
 
 
-# Project Title
+# Predictive Modelling using Linear Regression on the California Housing Dataset
 
-Predictive Modelling using Linear Regression on the California Housing Dataset
+This repository provides a detailed analysis and implementation of a Linear Regression model to predict median household values for California districts based on the 1990 US Census data.
 
 
 ## Implementation Details
 
 - `Dataset`: California Housing Dataset [(Details)](https://github.com/tree-shrew/regression-california-housing#dataset-details)
 - `Model`: [Linear Regressor](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html)
-- `Input`: 8 features
-- `Split`: For a standard test size of 0.2, random state 122 provided best results
-- `Scale`: All features were scaled upon splitting
+- `Input`: 8 features, all numeric with no null values
 - `Output`: Median House Value
+- `Scale`: All features were scaled as a pre-processing step
+- `Select`: Feature selection & Dimensionality reduction methods were applied on the dataset
+- `Split`: For a standard test size of 0.2, random state was initialised as 8
+- `Scores`: R Squared values and Mean Squared Errors were calculated for each mothod
 
 
 ## Evaluation and Results
 
 
-| *Metric*      | *Value*       |
-| ------------- | ------------- |
-| R2 Score      | 0.6316        |
-| MSE           | 0.4713        |
+| *Method*                       | *R2 Score*    | *MSE*        |
+| ------------------------------ | ------------- | ------------ |
+| No feature selection           | 0.6179        | 0.5015       |
+| Mutual Information Regression  | 0.5966        | 0.5294       |
+| f_test Regression              | 0.6182        | 0.5012       |
+| Pearson's Correlation          | 0.6025        | 0.5218       |
+| Recursive Feature Elimination  | 0.6023        | 0.5221       |
+| Select From Model              | 0.6013        | 0.5234       |
+| Sequential Feature Selection   | 0.6022        | 0.5222       |
+| Intrinsic L1 Regularization    | 0.6146        | 0.5059       |
+| Principal Component Analysis   | 0.6010        | 0.5238       |
 
-The above quant results show that the Linear Regressor can represent ~63% of the variability observed in the target variable can be explained by the regression model. 
+The above quant results show that ≈61% of the variability observed in the target variable can be explained by the regression model. 
 
-![Ground Truth vs Predicted Median Housing Values](https://github.com/tree-shrew/regression-california-housing/blob/main/Actual%20vs%20Predicted.png)
+Feature selection through f_test (Pearson's correlation) on scaled data (MinMaxScaler) provided the best accuracy (R2 = 61.69%, MSE = 0.5029) with minimal computational cost (k = 6)
 
-
-## Key Takeaways
-
-What did you learn while building this project? What challenges did you face and how did you overcome them?
-- The features 'AveRooms' & 'AveBedrms' are nearly perfectly correlated, however this multicollinearity does not impact target prediction. Infact dropping any one feature reduces the R2 score significantly. 
-- Even though the features 'AveBedrms', 'AveOccup' and 'Population' have extremely low correlation with the target variable, they have an impact towards a better fit model.
-- This model could be further improved upon by removing outliers from highly skewed features like 'Population', 'MedInc', 'AveBedrms', 'AveRooms', 'AveOccup'.
+![R2 Score & MSE across different Methods](https://github.com/tree-shrew/regression-california-housing/blob/main/Actual%20vs%20Predicted.png)
 
 
-## Dataset Details
+## Table of Contents
+
+- [Getting Started](#getting-started)
+- [Data Overview](#data-overview)
+- [Preprocessing and Feature Selection](#preprocessing-and-feature-selection)
+- [Model Training and Evaluation](#model-training-and-evaluation)
+- [Results](#results)
+- [Key Takeaways](#key-takeaways)
+- [Contributing](#contributing)
+- [Libraries](#libraries)
+- [License](#license)
+
+
+## Getting Started
+
+### Prerequisites
+
+Ensure you have the following libraries installed:
+
+- `pandas`
+- `seaborn`
+- `matplotlib`
+- `scikit-learn`
+
+You can install them using pip:
+
+```bash
+pip install pandas seaborn matplotlib scikit-learn
+```
+
+### Running the Code
+
+To run the code, execute the `california_housing_lr.py` script. The script will load the data, preprocess it, perform feature selection, and train a Linear Regression model. 
+
+```bash
+python california_housing_lr.py
+```
+
+## Data Overview
 
 This dataset was obtained from the StatLib repository ([Link](https://www.dcc.fc.up.pt/~ltorgo/Regression/cal_housing.html))
-
-This dataset was derived from the 1990 U.S. census, using one row per census block group. A block group is the smallest geographical unit for which the U.S. Census Bureau publishes sample data (a block group typically has a population of 600 to 3,000 people).
-
-A household is a group of people residing within a home. Since the average number of rooms and bedrooms in this dataset are provided per household, these columns may take surprisingly large values for block groups with few households and many empty houses, such as vacation resorts.
-
-It can be downloaded/loaded using the sklearn.datasets.fetch_california_housing function.
 
 - [California Housing Dataset in Sklearn Documentation](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_california_housing.html)
 - 20640 samples
@@ -60,26 +95,53 @@ It can be downloaded/loaded using the sklearn.datasets.fetch_california_housing 
     - `Longitude` block group longitude
 - Target: Median house value for California districts, expressed in hundreds of thousands of dollars ($100,000)
 
+This data is fetched directly using `fetch_california_housing` from `sklearn.datasets`.
 
-## How to Run
 
-Template code is provided in the `california_housing.ipynb` file. 
+## Preprocessing and Feature Selection
 
-In a terminal or command window, navigate to the top-level project directory `regression-california-housing` (that contains this README) and run one of the following commands:
+### Normalization
 
-```bash
-ipython notebook california_housing.ipynb
-```  
-or
-```bash
-jupyter notebook california_housing.ipynb
-```
-or open with Jupyter Lab
-```bash
-jupyter lab
-```
+The data is normalized using `MinMaxScaler` to prepare it for training.
 
-This will open the Jupyter Notebook software and project file in your browser.
+### Feature Selection
+
+Several feature selection methods are explored:
+- **SelectPercentile** and **SelectKBest**: Based on mutual information and f-regression.
+- **Recursive Feature Elimination**, **SelectFromModel** and **Sequential Feature Selector**: Using Lasso & Ridge regressors as estimators.
+- **PCA (Principal Component Analysis)**: To test and reduce dimensionality.
+
+
+## Model Training and Evaluation
+
+The Linear Regression model is trained on the processed dataset. The model's performance is evaluated using common metrics like Mean Squared Error (MSE) and R-squared.
+
+
+## Results
+
+The model achieves reasonable accuracy in predicting housing prices. Detailed plots and evaluation metrics are provided in the script.
+
+Best method: Feature selection through f_regression scoring function with SelectKBest as the transformer
+- **k**: [6]
+- **MSE**: [0.5029]
+- **R-squared**: [61.69%]
+
+Visualizations include scatter plots of predicted vs. actual values and feature importance graphs.
+
+
+## Key Takeaways
+
+- Linear Regressor seems to cap at 62% R2 score even after treating with different feature selection and dimensionality reduction methods.
+- The best scores across the board of selection methods are observed when the LR model is trained on all features (R2 = 0.6179, MSE = 0.5015).
+- Near best scores are observed after applying feature selection, with a 0.28% increase in MSE when 2 least important features are dropped (R2 = 0.6169, MSE = 0.503).
+- Further, if the feature threshold is set to 4, feature selection through SFS still provides near to best accuracy (R2 = 60.22%, MSE = 0.5222) with only a 2.39% reduction in R2 score compared to the f_test variant with k=6.
+- The scores for when selecting with RFE on a Lasso estimator significantly drop if scaled data is used. Hence RFE is build on raw data.
+- Future prospects: comparing with Decision Tree and Random Forest regressors and implementing robust tuning using Cross Validation techniques.
+
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request with your changes.
 
 
 ## Libraries 
@@ -104,3 +166,4 @@ Below references can be used for further exploration:
 ## License
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+---
