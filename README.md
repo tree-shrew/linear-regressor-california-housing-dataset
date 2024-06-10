@@ -37,7 +37,7 @@ The above quant results show that ≈61% of the variability observed in the targ
 
 Feature selection through f_test (Pearson's correlation) on scaled data (MinMaxScaler) provided the best accuracy (R2 = 61.69%, MSE = 0.5029) with minimal computational cost (k = 6)
 
-![R2 Score & MSE across different Methods](https://github.com/tree-shrew/regression-california-housing/blob/main/Actual%20vs%20Predicted.png)
+![R2 Score & MSE across different Methods](https://github.com/tree-shrew/regression-california-housing/blob/main/R2%20%26%20MSE%20across%20methods.png)
 
 
 ## Table of Contents
@@ -136,7 +136,7 @@ Visualizations include scatter plots of predicted vs. actual values and feature 
 - Near best scores are observed after applying feature selection, with a 0.28% increase in MSE when 2 least important features are dropped (R2 = 0.6169, MSE = 0.503).
 - Further, if the feature threshold is set to 4, feature selection through SFS still provides near to best accuracy (R2 = 60.22%, MSE = 0.5222) with only a 2.39% reduction in R2 score compared to the f_test variant with k=6.
 - The scores for when selecting with RFE on a Lasso estimator significantly drop if scaled data is used. Hence RFE is build on raw data.
-- Future prospects: comparing with Decision Tree and Random Forest regressors and implementing robust tuning using Cross Validation techniques.
+- Future prospects: comparing with Decision Tree and Random Forest regressors, implementing robust tuning using Cross Validation techniques, building a pipe object for simultaneously testing all methods and/or models.
 
 
 ## Contributing
