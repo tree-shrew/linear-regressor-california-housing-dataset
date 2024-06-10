@@ -25,7 +25,7 @@ This repository provides a detailed analysis and implementation of a Linear Regr
 | ------------------------------ | ------------- | ------------ |
 | No feature selection           | 0.6179        | 0.5015       |
 | Mutual Information Regression  | 0.5966        | 0.5294       |
-| f_test Regression              | 0.6182        | 0.5012       |
+| f_test Regression              | 0.6169        | 0.5012       |
 | Pearson's Correlation          | 0.6025        | 0.5218       |
 | Recursive Feature Elimination  | 0.6023        | 0.5221       |
 | Select From Model              | 0.6013        | 0.5234       |
